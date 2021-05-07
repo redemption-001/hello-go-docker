@@ -1,4 +1,11 @@
+FROM golang:1.16 AS go
+
+WORKDIR /go/app
+
+COPY ./go /go/app
+RUN go build
+
 FROM scratch
 
-COPY ./bin/hello /
+COPY --from=go /go/app/hello /
 CMD [ "./hello" ]
