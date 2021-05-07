@@ -1,0 +1,7 @@
+FROM golang:1.16
+
+WORKDIR /go/app
+
+COPY ./go /go/app
+RUN go build
+CMD [ "./hello" ]
